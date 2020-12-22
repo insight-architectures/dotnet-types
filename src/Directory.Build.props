@@ -1,7 +1,9 @@
 <Project>
   <PropertyGroup>
     <RootNamespace>InsightArchitectures.Types</RootNamespace>
+    <AssemblyName>$(RootNamespace).$(MSBuildProjectName)</AssemblyName>
     <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -14,6 +16,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/insight-architectures/dotnet-types</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageId>$(AssemblyName)</PackageId>
   </PropertyGroup>
 
   <PropertyGroup>
