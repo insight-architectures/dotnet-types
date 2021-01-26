@@ -21,21 +21,26 @@ namespace InsightArchitectures.Types
 
             var match = _personalNumberRegex.Match(input);
 
+            result = default;
+
             if (!match.Success)
             {
-                result = default;
                 return false;
             }
 
             var year = getYear(match.Groups["year"]);
-            var month = int.Parse(match.Groups["month"].Value, CultureInfo.InvariantCulture.NumberFormat);
-            var day = int.Parse(match.Groups["day"].Value, CultureInfo.InvariantCulture.NumberFormat);
-            var extra = int.Parse(match.Groups["extra"].Value, CultureInfo.InvariantCulture.NumberFormat);
+            var month = match.Groups["month"].Value;
+            var day = match.Groups["day"].Value;
 
-            result = new SwedishPersonalNumber(new DateTime(year, month, day), extra);
-            return true;
+            if (DateTime.TryParse($"{year}-{month}-{day}", out var date) && int.TryParse(match.Groups["extra"].Value, NumberStyles.None, CultureInfo.InvariantCulture.NumberFormat, out var extra))
+            {
+                result = new SwedishPersonalNumber(date, extra);
+                return true;
+            }
 
-            static int getYear(Group group)
+            return false;
+
+            static string getYear(Group group)
             {
                 var str = group.Value;
 
@@ -44,7 +49,7 @@ namespace InsightArchitectures.Types
                     str = $"19{str}";
                 }
 
-                return int.Parse(str, CultureInfo.InvariantCulture.NumberFormat);
+                return str;
             }
         }
     }
