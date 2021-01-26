@@ -164,5 +164,21 @@ namespace Tests
                 Assert.That(result.OrdinalNumber, Is.EqualTo(ordinal));
             });
         }
+
+        [Test]
+        [Property("Issue", 3)]
+        [Property("IssueLink", "https://github.com/insight-architectures/dotnet-types/issues/3")]
+        [CustomInlineAutoData("1234567890")]
+        [CustomInlineAutoData("12345678-9012")]
+        [CustomInlineAutoData("12345678")]
+        [CustomInlineAutoData("123456-7890")]
+        [CustomInlineAutoData("12-34-56-7890")]
+        [CustomInlineAutoData("1234-56-78-9012")]
+        public void TryParse_should_not_throw_when_input_date_is_not_valid(string input)
+        {
+            var result = SwedishPersonalNumber.TryParse(input, out _);
+
+            Assert.That(result, Is.False);
+        }
     }
 }
