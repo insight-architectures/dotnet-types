@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\SwedishPersonalNumber\SwedishPersonalNumber.csproj" />
+    <ProjectReference Include="..\..\src\SwedishPersonalIdentityNumber\SwedishPersonalIdentityNumber.csproj" />
   </ItemGroup>
 
 </Project>

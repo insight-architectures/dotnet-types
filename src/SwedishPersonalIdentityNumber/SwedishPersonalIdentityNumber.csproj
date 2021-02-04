@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;netstandard2.1</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageDescription>This package contains a representation of the Swedish Personal Identity Number that can be reused across projects. It supports parsing a string and printing it as a string according to different formats.</PackageDescription>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="SwedishPersonalIdentityNumber.*.cs">
+      <DependentUpon>SwedishPersonalIdentityNumber.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
