@@ -43,5 +43,19 @@ namespace InsightArchitectures.Types
 
         /// <inheritdoc/>
         public override string ToString() => ToFormattedString(SwedishPersonalIdentityNumberFormats.TwelveDigits);
+
+        /// <inheritdoc/>
+        public virtual bool Equals(SwedishPersonalIdentityNumber? other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            return DateTime.Equals(DateOfBirth.Date, other.DateOfBirth.Date) && Equals(OrdinalNumber, other.OrdinalNumber);
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => DateOfBirth.Date.GetHashCode() ^ OrdinalNumber.GetHashCode();
     }
 }
